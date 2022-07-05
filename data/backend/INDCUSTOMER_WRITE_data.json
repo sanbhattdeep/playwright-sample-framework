@@ -1,0 +1,43 @@
+{
+    "body": {
+        "customer": {
+            "_type": "IndividualCustomer",
+            "_key": {
+                "rootId": "57b8ff82-b017-4cb0-bfd6-ac4d454fdc1f",
+                "revisionNo": 1
+            },
+            "_modelName": "INDIVIDUALCUSTOMER",
+            "_modelVersion": "7",
+            "state": "qualified",
+            "communicationInfo": {
+                "addresses": [
+                    {
+                        "location": {
+                            "addressType": "Mailing",
+                            "stateProvinceCd": "IL",
+                            "city": "Chicago",
+                            "postalCode": "60616",
+                            "countryCd": "US",
+                            "addressLine1": "2701 S Indiana Ave",
+                            "_type": "GenesisLocation"
+                        },
+                        "preferred": true,
+                        "_type": "GenesisCrmAddress"
+                    }
+                ],
+                "_type": "GenesisCrmCommunicationInfo"
+            },
+            "details": {
+                "person": {
+                    "firstName": "Anna",
+                    "lastName": "Kournikova",
+                    "genderCd": "Female",
+                    "birthDate": "1982-05-25",
+                    "_type": "GenesisCrmPerson"
+                },
+                "registerOnline": true,
+                "_type": "GenesisCrmIndividualDetails"
+            }
+        }
+    }
+}

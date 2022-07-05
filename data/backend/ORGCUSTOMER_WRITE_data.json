@@ -1,0 +1,39 @@
+{
+    "body": {
+        "customer": {
+            "_type": "OrganizationCustomer",
+            "_key": {
+                "rootId": "57b8ff82-b017-4cb0-bfd6-ac4d454fdc1f",
+                "revisionNo": 1
+            },
+            "_modelName": "ORGANIZATIONCUSTOMER",
+            "_modelVersion": "7",
+            "state": "qualified",
+            "communicationInfo": {
+                "addresses": [
+                    {
+                        "location": {
+                            "addressType": "Legal",
+                            "stateProvinceCd": "IL",
+                            "city": "Chicago",
+                            "postalCode": "60616",
+                            "countryCd": "US",
+                            "addressLine1": "2701 S Indiana Ave",
+                            "_type": "GenesisLocation"
+                        },
+                        "preferred": true,
+                        "_type": "GenesisCrmAddress"
+                    }
+                ],
+                "_type": "GenesisCrmCommunicationInfo"
+            },
+            "details": {
+                "legalEntity": {
+                    "legalName": "Organisation Customer",
+                    "_type": "GenesisCrmLegalEntity"
+                },
+                "_type": "GenesisCrmBusinessDetails"
+            }
+        }
+    }
+}
