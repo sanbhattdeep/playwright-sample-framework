@@ -8,7 +8,7 @@ import Env from "../utils/Env";
 const test = base.extend<{
     createCustomerPage: CreateCustomerPage
 }>({
-    page: async ({ page }, use) => {
+    page: [async ({ page }, use) => {
         //sign-in
         await page.goto(Env.cssr_base_url);
         await page.goto(`${Env.cssr_base_url}${Env.ccsr_login_url}`);
@@ -19,7 +19,8 @@ const test = base.extend<{
         await expect(page).toHaveURL(`${Env.cssr_base_url}${Env.cssr_signedin_url}`);
         // Use signed-in page in the test.
         await use(page);
-    },
+    }, { scope: 'test', timeout: 60000 } ],
+
     createCustomerPage: async ({page}, use) => {
         await use(new CreateCustomerPage(page));
     },
