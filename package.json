@@ -13,6 +13,7 @@
   "license": "ISC",
   "devDependencies": {
     "@playwright/test": "^1.23.3",
-    "allure-playwright": "^2.0.0-beta.18"
+    "allure-playwright": "^2.0.0-beta.18",
+    "winston": "^3.8.1"
   }
 }
