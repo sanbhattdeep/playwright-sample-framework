@@ -49,4 +49,33 @@ export default class Utils {
         indcustomerpostdata.body.customer.details.person.lastName = Utils.generateLastName();
         return indcustomerpostdata;
     }
+
+    
+   public static padTo2Digits(num: number) {
+    return num.toString().padStart(2, '0');
+  }
+  
+  // 👇️ format as "YYYY-MM-DD hh:mm:ss"
+  // You can tweak formatting easily
+  public static formatDate(date?: Date) {
+
+    if(!date) {
+      date = new Date();
+    }
+
+    return (
+      [
+        date.getFullYear(),
+        Utils.padTo2Digits(date.getMonth() + 1),
+        Utils.padTo2Digits(date.getDate()),
+      ].join('-') +
+      ' ' +
+      [
+        Utils.padTo2Digits(date.getHours()),
+        Utils.padTo2Digits(date.getMinutes()),
+        Utils.padTo2Digits(date.getSeconds()),
+        Utils.padTo2Digits(date.getMilliseconds()),
+      ].join(':')
+    );
+  } 
 }
