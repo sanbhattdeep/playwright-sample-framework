@@ -1,41 +1,34 @@
-import { test, expect } from '@playwright/test';
+import { test } from '@playwright/test';
 import Env from '../../../src/base/utils/Env';
 import Utils from '../../../src/base/utils/utils';
-import * as empty_body from '../../../data/backend/empty_body.json';
+import { CustomerService } from '../../../src/base/backend/crm/CustomerService';
+import logger from "../../../src/base/utils/fixtures";
 
+test.describe('Create Organisation customer from backend @backend', async () => {
+  let _lastRootID; let testdata;
+  const org_customer = new CustomerService("create_org_customer_backend_test");
+  let init_url = `${Env.crm_base_url}${Env.org_customer_init_url}`;
+  let write_url = `${Env.crm_base_url}${Env.org_customer_write_url}`;
 
-test.describe('Create Organisation customer from backend', async () => {
-
-  let _lastRootID: string;
 
   test('create/verify org customer from backend with init-write-load @backend', async ({ request }) => {
 
-    //init customer and capture rootId
-    let _response = await request.post(`${Env.crm_base_url}${Env.org_customer_init_url}`, {
-      data: JSON.stringify(empty_body),
+    await test.step('call init customer api', async () => {
+      _lastRootID = await org_customer.doInitOperation(init_url, request);
     });
 
-    expect(_response).toBeOK();
-    const apiResponse = await _response.json();
-    _lastRootID = apiResponse.body.success._key.rootId;
-    console.log("Customer init with rootId: " + _lastRootID);
-
-    //generate random legal name and update customer post data with name and rootId
-    const testdata = Utils.updateTestData_OrgCustomer_Write(_lastRootID);
-
-    //write customer with rootId from init
-    _response = await request.post(`${Env.crm_base_url}${Env.org_customer_write_url}`, {
-      data: JSON.stringify(testdata),
+    await test.step('Extract rootId from Init response and update in write post data', async () => {
+      testdata = Utils.updateTestData_OrgCustomer_Write(_lastRootID);
     });
 
-    expect(_response).toBeOK();
-
-    //verify created customer with load{rootId}
-    _response = await request.post(`${Env.crm_base_url}${Env.org_customer_load_url}${_lastRootID}`, {
-      data: JSON.stringify(empty_body),
+    await test.step('call write customer api', async () => {
+      await org_customer.doWriteOperation(write_url, request, testdata);
     });
 
-    expect(_response).toBeOK();
-    console.log(await _response.json());
+    await test.step('call load customer api and verify rootId', async () => {
+      let org_custLoad_url_withRootID = `${Env.crm_base_url}${Env.org_customer_load_url}${_lastRootID}`;
+      await org_customer.doPost(org_custLoad_url_withRootID, request);
+    });
+    
   });
 });
