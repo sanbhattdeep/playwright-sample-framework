@@ -1,14 +1,19 @@
 import { expect, test as base } from '@playwright/test';
 import LoginPage from '../../../pages/login.page';
 import CreateCustomerPage from '../../../pages/createcustomer.page';
+import ClassManagementPage from '../../../pages/classmanagement.page';
+import CreateNewQuotePage from '../../../pages/createnewquote.page';
 import Env from "../utils/Env";
 import Logger from './Logger';
 
 
 //override page fixture to include login
 const test = base.extend<{
-    createCustomerPage: CreateCustomerPage,
+    createCustomerPage: CreateCustomerPage
+    classManagementPage: ClassManagementPage
+    createNewQuotePage: CreateNewQuotePage
     logger: Logger
+
 }>({
     page: [async ({ page }, use) => {
         //sign-in
@@ -25,6 +30,12 @@ const test = base.extend<{
 
     createCustomerPage: async ({page}, use) => {
         await use(new CreateCustomerPage(page));
+    },
+    classManagementPage: async ({page}, use) => {
+        await use(new ClassManagementPage(page));
+    },
+    createNewQuotePage: async ({page}, use) => {
+        await use(new CreateNewQuotePage(page));
     },
     logger:async ({}, use) => {
         await use(new Logger());

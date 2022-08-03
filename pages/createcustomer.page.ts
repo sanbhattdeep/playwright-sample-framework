@@ -5,6 +5,7 @@ import { CommonMetaData } from "../data/page_metdata/common.metadata";
 import * as orgcustomer_testdata from "../data/backend/ORGCUSTOMER_WRITE_data.json";
 import { GeneralInfoMetaData } from "../data/page_metdata/customer.metdadata";
 import { ContactInfoAddressMetadata } from "../data/page_metdata/customer.metdadata";
+import { SelectProductTypeMetaData } from "../data/page_metdata/customer.metdadata";
 import { expect } from "@playwright/test";
 import Utils from "../utils/utils";
 
@@ -115,5 +116,19 @@ export default class CreateCustomerPage extends Wrapper {
         //Verify Customer Save Success Banner
         const Customer_Save_Success_Banner = await this.findLocator(CreateCustomerTypeMetaData.Customer_Save_Success_Banner);
         await expect(Customer_Save_Success_Banner).toBeVisible();
+    }
+
+    public async selectProductType(){
+        //Select Product Type
+        console.log("Click on Global Navigation Button and navigate to Select Product Screen");
+        const GlobalNavigationBtn = await this.findLocator(SelectProductTypeMetaData.globalNavigationButton);
+        await GlobalNavigationBtn.click();
+        const QuotesPlusBtn = await this.findLocator(SelectProductTypeMetaData.quotesPlusButton);
+        await QuotesPlusBtn.click();
+        const SelectProductType = await this.findLocator(SelectProductTypeMetaData.productType_STD);
+        await SelectProductType.click();
+        const ContinueBtn = await this.findLocator(SelectProductTypeMetaData.continue_Btn);
+        await ContinueBtn.click();
+        console.log("STD Product is selected and navigated to General Information Section");
     }
 }

@@ -27,3 +27,10 @@ export enum ContactInfoAddressMetadata {
 export enum CustomerMetaData {
     customerName = 'div.gen-customer-overview-name',
 }
+
+export enum SelectProductTypeMetaData{
+   globalNavigationButton = '[data-testid="globalNavigation"]',
+   quotesPlusButton = 'button >> nth=3',
+   productType_STD = '.gen-products-dialog-card__content >> nth=0',
+   continue_Btn = 'button:has-text("Continue")',
+}
