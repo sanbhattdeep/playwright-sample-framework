@@ -1,6 +1,5 @@
 import Wrapper from "../src/base/Wrapper";
 import { Page } from "@playwright/test";
-import Env from "../src/base/utils/Env";
 import * as ClassManagementTypeMetaData from "../data/page_metdata/classmanagement.metadata";
 import TestData from "../src/base/utils/TestData";
 
@@ -35,5 +34,10 @@ export default class ClassManagementPage extends Wrapper {
     public async clickOpportunity() {
         const opportunityLink = await this.findLocator(ClassManagementTypeMetaData.ClassManagementPage.Opportunity_link);
         await opportunityLink.click();
-    } 
+    }
+    
+    public async doClickCustomerName() {
+        const customerName_Link = await this.findLocator(ClassManagementTypeMetaData.ClassManagementPage.CustomerName_Link);
+        await customerName_Link.click();
+    }
 }

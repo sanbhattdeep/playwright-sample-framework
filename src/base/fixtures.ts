@@ -3,8 +3,9 @@ import LoginPage from '../../pages/login.page';
 import CreateCustomerPage from '../../pages/createcustomer.page';
 import ClassManagementPage from '../../pages/classmanagement.page';
 import CreateNewQuotePage from '../../pages/createnewquote.page';
-import Env from "./utils/Env";
-import Logger from './utils/Logger';
+import CustomerPortfolioPage from '../../pages/customerportfolio.page';
+import Env from "../base/utils/Env";
+import Logger from '../base/utils/Logger';
 
 
 //override page fixture to include login
@@ -13,6 +14,7 @@ const test = base.extend<{
     classManagementPage: ClassManagementPage
     createNewQuotePage: CreateNewQuotePage
     logger: Logger
+    customerPortfolioPage: CustomerPortfolioPage
 
 }>({
     page: [async ({ page }, use) => {
@@ -39,6 +41,9 @@ const test = base.extend<{
     },
     logger:async ({}, use) => {
         await use(new Logger());
+    },
+    customerPortfolioPage: async ({page}, use) => {
+        await use(new CustomerPortfolioPage(page));
     }
 });
 

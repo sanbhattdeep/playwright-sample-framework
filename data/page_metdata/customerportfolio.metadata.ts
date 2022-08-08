@@ -1,0 +1,17 @@
+export enum PoliciesTabMetaData {
+    PoliciesTab_Btn = 'div[role="tab"]:has-text("Policies")',
+    PolicyNumber_Text = '(//a[@class="gen-new-policies-table-cell-paragraph"])[2]',
+    PolicyName_Link = 'text=Short Term Disability >> nth=1',
+    PolicyStatus_Active = 'text=Active >> nth=2',
+    IWantTo_Btn = 'button:has-text("I want to")',
+    IWantTo_CancelBtn = 'text=Cancel',
+    CancellationEffectiveDate = '[placeholder="MM\/DD\/YYYY"]',
+    Today_SelDate = 'text=Today',
+    CancellationReason_ComboBox = 'text=Cancellation Effective DateReason >> div[role="combobox"]',
+    CancellationReason_Option = '//li[@title="Group Sponsor Request"]',
+    Continue_Btn = 'button:has-text("Continue")',
+    Confirm_Btn = 'button:has-text("Confirm")',
+    PolicyCancellation_AlertMessage = '//span[@class="ant-alert-message" and contains(text(),"This Policy was Cancelled Effective on")]',
+    TransactionHistory_Btn = 'a:has-text("Transaction History")',
+    TransactionHistory_Status = 'a:has-text("STATUS")',
+}
