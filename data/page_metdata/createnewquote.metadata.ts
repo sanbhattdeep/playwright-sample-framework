@@ -33,7 +33,7 @@ export enum PlansTabMetaData{
 }
 
 export enum ClassSelectionMetaData{
-    ClassSelection_RadioBtn = 'text=Class SelectionClass 78 >> input[type="checkbox"]',
+    ClassSelection_RadioBtn = 'div.gen-plans-data-form-container input',
     ConributionBasis = '(//span[@class="ant-form-item-children"]//div[@class="ant-select-show-arrow ant-select ant-select-enabled ant-select-allow-clear"])[5]',
     ConributionBasis_SelOption = 'li[role="option"]:has-text("Percent")',
 }

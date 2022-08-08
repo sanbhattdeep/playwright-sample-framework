@@ -1,0 +1,19 @@
+{
+    "Class": {
+        "classnumber": "100",
+        "classname": "TestClass"
+    },
+   
+     "PolicySummary": {
+        "deliverymodel": "Group/Voluntary",
+        "situsstate": "AL"
+    },
+      
+    "agencies": {
+        "agencyname": "Q1AG"
+    },
+  
+    "rating": {
+        "numberofparticipants": "10"
+    }  
+  }

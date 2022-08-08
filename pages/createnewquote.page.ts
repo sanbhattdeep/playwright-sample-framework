@@ -10,6 +10,7 @@ import { QuotePremiumSectionMetaData } from "../data/page_metdata/createnewquote
 import { ProposeQuoteMetaData } from "../data/page_metdata/createnewquote.metadata";
 import { ReviewAndIssuePolicySection } from "../data/page_metdata/createnewquote.metadata";
 import { expect } from "@playwright/test";
+import TestData from "../src/base/utils/TestData";
 
 export default class CreateNewQuotePage extends Wrapper {
 
@@ -26,24 +27,24 @@ export default class CreateNewQuotePage extends Wrapper {
     await continue_btn.click();
     }
 
-    public async policySummaryPage() {
+    public async policySummaryPage(testData:TestData) {
         const deliveryModel = await this.findLocator(PolicySummaryPageMetaData.DeliveryModel_SelOption);
         await deliveryModel.click();
         const deliveryModelInput = await this.findLocator(PolicySummaryPageMetaData.DeliveryModel_Input);
-        await deliveryModelInput.fill("Group/Voluntary");
+        await this.fill(deliveryModelInput,testData.getTestData().PolicySummary.deliverymodel.toString())
         const DeliveryModelGroupOption = await this.findLocator(PolicySummaryPageMetaData.DeliveryModel_GroupOption);
         await DeliveryModelGroupOption.click();
         const situsState = await this.findLocator(PolicySummaryPageMetaData.SitusState_SelOption);
         await situsState.click();
         const situsStateInput = await this.findLocator(PolicySummaryPageMetaData.SitusState_Input);
-        await situsStateInput.fill("AL");
+        await this.fill(situsStateInput,testData.getTestData().PolicySummary.situsstate.toString())
         const SituStateALOption = await this.findLocator(PolicySummaryPageMetaData.SitusState_ALOption);
         await SituStateALOption.click();
         const saveBtn = await this.findLocator(PolicySummaryPageMetaData.Save_Btn);
         await saveBtn.click();
     }
 
-    public async agencyCompensation() {
+    public async agencyCompensation(testData:TestData) {
         const agencyCompensastgionTab = await this.findLocator(AgenciesAndCompensationPageMetaData.AgenciesAndCompensation_Tab);
         await agencyCompensastgionTab.click();
         const addNewAgency = await this.findLocator(AgenciesAndCompensationPageMetaData.AddNewAgency_Btn);
@@ -51,7 +52,7 @@ export default class CreateNewQuotePage extends Wrapper {
         const searchAgencyBtn = await this.findLocator(AgenciesAndCompensationPageMetaData.SearchAgency_Btn);
         await searchAgencyBtn.click();
         const agencyNameInput = await this.findLocator(AgenciesAndCompensationPageMetaData.AgencyName_Input);
-        await agencyNameInput.fill("Q1AG");
+        await this.fill(agencyNameInput,testData.getTestData().agencies.agencyname.toString());
         const searchBtn = await this.findLocator(AgenciesAndCompensationPageMetaData.Search_Btn);
         await searchBtn.click();
         const agencyNameRadioBtn = await this.findLocator(AgenciesAndCompensationPageMetaData.AgencyName_RadioBtn);
@@ -87,12 +88,12 @@ export default class CreateNewQuotePage extends Wrapper {
         await contributionBasis_Option.click();
     }
 
-    public async fillDetailsInQuotePremiumSection(){
+    public async fillDetailsInQuotePremiumSection(testData:TestData){
         const clickArrowBtn = await this.findLocator(QuotePremiumSectionMetaData.Arrow_Btn);
         await clickArrowBtn.click();
         const numberOfParticipant_Input = await this.findLocator(QuotePremiumSectionMetaData.NumberOfParticipant_Input);
         await numberOfParticipant_Input.click();
-        await numberOfParticipant_Input.fill("10");
+        await this.fill(numberOfParticipant_Input,testData.getTestData().rating.numberofparticipants.toString())
         const calculateRate_Btn = await this.findLocator(QuotePremiumSectionMetaData.CalculateRate_Btn);
         await calculateRate_Btn.click();
     }

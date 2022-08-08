@@ -13,6 +13,4 @@ export default class Env {
     public static cssr_create_org_customer_url = 'customers/create/nonindividual';
     public static cssr_create_ind_customer_url = 'customers/create/individual';
     public static qa_user_password:string = 'qa';
-    public static class_number_input:string = '78';
-    public static class_name_input:string = 'first'; 
 }
