@@ -37,4 +37,8 @@ export default class Wrapper {
             await this.page.close();
          }
     }
+
+    public async fill(locator:Locator,fillText:string) {
+        await locator.fill(fillText);
+    }
 }

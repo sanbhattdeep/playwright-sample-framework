@@ -1,10 +1,10 @@
 import { expect, test as base } from '@playwright/test';
-import LoginPage from '../../../pages/login.page';
-import CreateCustomerPage from '../../../pages/createcustomer.page';
-import ClassManagementPage from '../../../pages/classmanagement.page';
-import CreateNewQuotePage from '../../../pages/createnewquote.page';
-import Env from "../utils/Env";
-import Logger from './Logger';
+import LoginPage from '../../pages/login.page';
+import CreateCustomerPage from '../../pages/createcustomer.page';
+import ClassManagementPage from '../../pages/classmanagement.page';
+import CreateNewQuotePage from '../../pages/createnewquote.page';
+import Env from "./utils/Env";
+import Logger from './utils/Logger';
 
 
 //override page fixture to include login

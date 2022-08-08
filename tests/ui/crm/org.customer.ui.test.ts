@@ -1,4 +1,4 @@
-import test, { expect } from '../../../src/base/utils/fixtures';
+import test, { expect } from '../../../src/base/fixtures';
 import Env from '../../../src/base/utils/Env';
 
 test('Verify Organization customer creation from UI @ui', async ({ page, createCustomerPage, logger }) => {
