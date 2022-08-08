@@ -8,4 +8,5 @@ export enum ClassManagementPage {
     Confirm_Btn = 'button:has-text("Confirm")',
     Save_Btn = 'button:has-text("Save") >> nth=2',
     Opportunity_link = '//h3[@class="gen-new-opportunity-cases-table-cell-heading"]',
+    CustomerName_Link = '(//span[@class="ant-breadcrumb-link"]//a)[2]',
 } 
