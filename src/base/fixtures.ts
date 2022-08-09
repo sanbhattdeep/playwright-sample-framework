@@ -4,8 +4,8 @@ import CreateCustomerPage from '../../pages/createcustomer.page';
 import ClassManagementPage from '../../pages/classmanagement.page';
 import CreateNewQuotePage from '../../pages/createnewquote.page';
 import CustomerPortfolioPage from '../../pages/customerportfolio.page';
-import Env from "../base/utils/Env";
-import Logger from '../base/utils/Logger';
+import Env from "../../src/base/utils/Env";
+import Logger from "../../src/base/utils/Logger";
 
 
 //override page fixture to include login

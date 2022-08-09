@@ -23,7 +23,7 @@ export default class CustomerPortfolioPage extends Wrapper {
         const policyStatus_Active = await this.findLocator(PoliciesTabMetaData.PolicyStatus_Active);
         await expect(policyStatus_Active).toBeVisible();
     }
-    
+
     public async doPolicyCancellation() {
         const iWantTo_Btn = await this.findLocator(PoliciesTabMetaData.IWantTo_Btn);
         await iWantTo_Btn.click();
@@ -54,4 +54,64 @@ export default class CustomerPortfolioPage extends Wrapper {
         const transactionHistory_CancellationStatus = await this.findLocator(PoliciesTabMetaData.TransactionHistory_Status.replace("STATUS", Status));
         await expect(transactionHistory_CancellationStatus).toBeVisible();
     }
+
+    public async doMasterPolicyAmend() {
+        const iWantTo_Btn = await this.findLocator(PoliciesTabMetaData.IWantTo_Btn);
+        await iWantTo_Btn.click();
+
+        const iWantTo_AmendBtn = await this.findLocator(PoliciesTabMetaData.IWantTo_Amend_Btn);
+        await iWantTo_AmendBtn.click();
+
+        const amendmentEffectiveDate = await this.findLocator(PoliciesTabMetaData.AmendmentEffectiveDate);
+        await amendmentEffectiveDate.click();
+
+        const today_SelDate = await this.findLocator(PoliciesTabMetaData.Today_SelDate);
+        await today_SelDate.click();
+
+        const amendReason_ComboBox = await this.findLocator(PoliciesTabMetaData.AmendReason_ComboBox);
+        await amendReason_ComboBox.click();
+
+        const amendReason_Option = await this.findLocator(PoliciesTabMetaData.AmendReason_Option);
+        await amendReason_Option.click();
+
+        const continue_Btn = await this.findLocator(PoliciesTabMetaData.Continue_Btn);
+        await continue_Btn.click();
+
+        const plansTab = await this.findLocator(PoliciesTabMetaData.PlansTab);
+        await plansTab.click();
+
+        const rateBasis_Combobox = await this.findLocator(PoliciesTabMetaData.RateBasis_Combobox);
+        await rateBasis_Combobox.click();
+
+        const rateBasisValue = await this.findLocator(PoliciesTabMetaData.RateBasisValue);
+        rateBasisValue.click();
+
+        const calculateRates = this.findLocator(PoliciesTabMetaData.CalculateRates);
+        await (await calculateRates).click();
+
+        const issue_Btn = await this.findLocator(PoliciesTabMetaData.Issue_Btn)
+        await issue_Btn.click();
+
+        const confirm_Btn = await this.findLocator(PoliciesTabMetaData.Amendment_Issue_Confirm_Btn);
+        await confirm_Btn.click();
+
+        const transactionHystory = await this.findLocator(PoliciesTabMetaData.TransactionHistory_Btn);
+        await transactionHystory.click();
+
+        const viewLink = await this.findLocator(PoliciesTabMetaData.ViewLink);
+        await viewLink.first().click();
+
+        const amendStatus = await this.findLocator(PoliciesTabMetaData.AmendStatus_COMPLETED);
+        await expect(amendStatus).toBeVisible();
+        await expect(amendStatus).toHaveText("Completed");
+        
+        const transactionTypeText = await this.findLocator(PoliciesTabMetaData.TransactionTypeText_Amendment);
+        await  expect(transactionTypeText).toBeVisible();
+        await expect(transactionTypeText).toHaveText("Amendment");
+
+        const cancelButton = await this.findLocator(PoliciesTabMetaData.TransactionHystory_Cancel_Btn);
+        await cancelButton.click();
+
+    }
+
 }
