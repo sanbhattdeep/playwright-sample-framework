@@ -84,10 +84,10 @@ export default class CustomerPortfolioPage extends Wrapper {
         await rateBasis_Combobox.click();
 
         const rateBasisValue = await this.findLocator(PoliciesTabMetaData.RateBasisValue);
-        rateBasisValue.click();
+        await rateBasisValue.click();
 
-        const calculateRates = this.findLocator(PoliciesTabMetaData.CalculateRates);
-        await (await calculateRates).click();
+        const calculateRates = await this.findLocator(PoliciesTabMetaData.CalculateRates);
+        await calculateRates.click();
 
         const issue_Btn = await this.findLocator(PoliciesTabMetaData.Issue_Btn)
         await issue_Btn.click();
