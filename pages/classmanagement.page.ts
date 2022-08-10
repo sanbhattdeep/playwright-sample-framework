@@ -20,15 +20,16 @@ export default class ClassManagementPage extends Wrapper {
         await createClassBtn.click();
         const addClassBtn = await this.findLocator(ClassManagementTypeMetaData.ClassManagementPage.AddClass_Btn);
         await addClassBtn.click();
+        await this.waitForSpinner();
     } 
 
     public async enterClassNumber(testData:TestData) {
         const classNumber = await this.findLocator(ClassManagementTypeMetaData.ClassManagementPage.ClassNumber_Input);
         await classNumber.click();
-        // await classNumber.fill(Env.class_number_input);
         await this.fill(classNumber,testData.getTestData().Class.classnumber.toString())
         const saveBtn = await this.findLocator(ClassManagementTypeMetaData.ClassManagementPage.Save_Btn);
         await saveBtn.click();
+        await this.waitForSpinner();
     }
     
     public async clickOpportunity() {
