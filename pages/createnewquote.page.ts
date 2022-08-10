@@ -21,10 +21,12 @@ export default class CreateNewQuotePage extends Wrapper {
     public async selectNewQuote() {
     const createnewquote_btn = await this.findLocator(ClassManagementPage.CreateNewQuote_Btn);
     await createnewquote_btn.click();
+    await this.waitForSpinner();
     const selectProduct_std = await this.findLocator(ClassManagementPage.SelectProduct_STD);
     await selectProduct_std.click();
     const continue_btn = await this.findLocator(ClassManagementPage.Continue_Btn);
     await continue_btn.click();
+    await this.waitForSpinner();
     }
 
     public async policySummaryPage(testData:TestData) {
@@ -32,8 +34,6 @@ export default class CreateNewQuotePage extends Wrapper {
         await deliveryModel.click();
         const deliveryModelInput = await this.findLocator(PolicySummaryPageMetaData.DeliveryModel_Input);
         await this.fill(deliveryModelInput,testData.getTestData().PolicySummary.deliverymodel.toString())
-        const DeliveryModelGroupOption = await this.findLocator(PolicySummaryPageMetaData.DeliveryModel_GroupOption);
-        await DeliveryModelGroupOption.click();
         const situsState = await this.findLocator(PolicySummaryPageMetaData.SitusState_SelOption);
         await situsState.click();
         const situsStateInput = await this.findLocator(PolicySummaryPageMetaData.SitusState_Input);
@@ -42,6 +42,7 @@ export default class CreateNewQuotePage extends Wrapper {
         await SituStateALOption.click();
         const saveBtn = await this.findLocator(PolicySummaryPageMetaData.Save_Btn);
         await saveBtn.click();
+        await this.waitForSpinner();
     }
 
     public async agencyCompensation(testData:TestData) {
@@ -55,12 +56,15 @@ export default class CreateNewQuotePage extends Wrapper {
         await this.fill(agencyNameInput,testData.getTestData().agencies.agencyname.toString());
         const searchBtn = await this.findLocator(AgenciesAndCompensationPageMetaData.Search_Btn);
         await searchBtn.click();
+        await this.waitForSpinner();
         const agencyNameRadioBtn = await this.findLocator(AgenciesAndCompensationPageMetaData.AgencyName_RadioBtn);
         await agencyNameRadioBtn.click();
         const applyBtn = await this.findLocator(AgenciesAndCompensationPageMetaData.Apply_Btn);
         await applyBtn.click();
+        await this.waitForSpinner();
         const confirmBtn = await this.findLocator(AgenciesAndCompensationPageMetaData.Confirm_Btn);
         await confirmBtn.click();
+        await this.waitForSpinner();
     }
 
     public async plansPage() {
@@ -72,11 +76,13 @@ export default class CreateNewQuotePage extends Wrapper {
         await selectPlan_STD1.click();
         const continue_btn = await this.findLocator(ClassManagementPage.Continue_Btn);
         await continue_btn.click();
+        await this.waitForSpinner();
     }
 
     public async deleteByUp(){
         const deleteBtn = await this.findLocator(DeleteByUpMetaData.DeleteByUp_Btn);
         await deleteBtn.click(); 
+        await this.waitForSpinner();
     }
 
     public async selectClassOnPlanTab(){
@@ -96,13 +102,16 @@ export default class CreateNewQuotePage extends Wrapper {
         await this.fill(numberOfParticipant_Input,testData.getTestData().rating.numberofparticipants.toString())
         const calculateRate_Btn = await this.findLocator(QuotePremiumSectionMetaData.CalculateRate_Btn);
         await calculateRate_Btn.click();
+        await this.waitForSpinner();
     }
 
     public async rateAdjustCancelAction(){
         const adjustRateBtn = await this.findLocator(QuotePremiumSectionMetaData.AdjustRate_Btn);
         await adjustRateBtn.click();
+        await this.waitForSpinner();
         const cancelBtn = await this.findLocator(QuotePremiumSectionMetaData.CancelBtn_AdjustRateScreen);
         await cancelBtn.click();
+        await this.waitForSpinner();
     }
 
     public async readyToProposeOption(){
@@ -172,22 +181,27 @@ export default class CreateNewQuotePage extends Wrapper {
         await enrollmentTechnology_Option.click();
         const nextBtn = await this.findLocator(ReviewAndIssuePolicySection.NextBtn);
         await nextBtn.click();
+        await this.waitForSpinner();
     }
 
     public async fillInCustomerDataSection(){
         const nextBtn = await this.findLocator(ReviewAndIssuePolicySection.NextBtn);
         await nextBtn.click();
+        await this.waitForSpinner();
     }
 
     public async fillInDocumentsSection(){
         const nextBtn = await this.findLocator(ReviewAndIssuePolicySection.NextBtn);
         await nextBtn.click();
+        await this.waitForSpinner();
     }
 
     public async issueQuote(){
         const issueBtn = await this.findLocator(ReviewAndIssuePolicySection.IssueBtn);
         await issueBtn.click();
+        await this.waitForSpinner();
         const confirmBtn = await this.findLocator(AgenciesAndCompensationPageMetaData.Confirm_Btn);
         await confirmBtn.click();
+        await this.waitForSpinner();
     }
 }

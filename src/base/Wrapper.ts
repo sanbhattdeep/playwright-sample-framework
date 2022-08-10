@@ -41,4 +41,8 @@ export default class Wrapper {
     public async fill(locator:Locator,fillText:string) {
         await locator.fill(fillText);
     }
+
+    public async waitForSpinner() {
+        await this.page.waitForSelector('.ant-spin-container.ant-spin-blur,.anticon-spin',{state:'hidden'});
+    }
 }

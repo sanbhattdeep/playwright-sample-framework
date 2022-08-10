@@ -110,6 +110,7 @@ export default class CreateCustomerPage extends Wrapper {
         //Save and Exit the changes
         const Save_Exit_Btn = await this.findLocator(CommonMetaData.Save_Exit_Btn);
         await Save_Exit_Btn.click();
+        await this.waitForSpinner();
     }
 
     public async verifyCustomerSuccessBanner() {
