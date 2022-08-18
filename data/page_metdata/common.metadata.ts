@@ -6,5 +6,7 @@ export enum CommonMetaData {
     Search_Icon = '[type="action-search"]',
     Search_Text = '[aria-label="search text"]',
     Search_Result = 'li[role="menuitem"]:has-text("search text")',
+    Issue_Btn = 'button:has-text("Issue")',
+    Continue_Btn = 'button:has-text("Continue")',
     
 }

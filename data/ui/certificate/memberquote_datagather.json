@@ -1,0 +1,16 @@
+{
+    "InsuredGeneralInfo": {
+        "DOB": "10/10/1980",
+        "Address": "College Street 1",
+        "ZIPCode": "53786",
+        "City": "New York"
+    },
+
+    "InsuredWorkRelatedInfo": {
+        "AnnualEarning": "100"
+    },
+
+    "CoverageDetailsSec": {
+        "PriorCoverageAmount": "100"
+    }
+}

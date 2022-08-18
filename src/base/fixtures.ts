@@ -2,8 +2,9 @@ import { expect, test as base } from '@playwright/test';
 import LoginPage from '../../pages/login.page';
 import CreateCustomerPage from '../../pages/createcustomer.page';
 import ClassManagementPage from '../../pages/classmanagement.page';
-import CreateNewQuotePage from '../../pages/createnewquote.page';
+import CreateNewQuotePage from '../../pages/createnewquote.page';CreateNewQuotePage
 import CustomerPortfolioPage from '../../pages/customerportfolio.page';
+import CreateMemberQuotePage from '../../pages/memberquote.page';
 import Env from "../../src/base/utils/Env";
 import Logger from "../../src/base/utils/Logger";
 
@@ -15,6 +16,7 @@ const test = base.extend<{
     createNewQuotePage: CreateNewQuotePage
     logger: Logger
     customerPortfolioPage: CustomerPortfolioPage
+    createMemberQuotePage: CreateMemberQuotePage
 
 }>({
     page: [async ({ page }, use) => {
@@ -44,6 +46,9 @@ const test = base.extend<{
     },
     customerPortfolioPage: async ({page}, use) => {
         await use(new CustomerPortfolioPage(page));
+    },
+    createMemberQuotePage: async ({page}, use) => {
+        await use(new CreateMemberQuotePage(page));
     }
 });
 
