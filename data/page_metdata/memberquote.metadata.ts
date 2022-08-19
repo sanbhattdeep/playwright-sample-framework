@@ -46,7 +46,6 @@ export enum InsuredPageMetaData {
 export enum CoveragesPageMetaData{
     ShortTermDisabilityPlus_Btn = 'text=Select PlanSHORT TERM DISABILITY >> svg[role="img"] >> nth=1',
     SelectPlan1_STD = 'input[type="checkbox"]',
-    
     EnrollementDate_Btn = '[id="quote\.individualPackagingDetail\.plan\.coverageDefs\[0\]\.enrollmentDate"] [placeholder="Select date"]',
     PriorCoverageAmount_Input = '[id="quote\.individualPackagingDetail\.plan\.coverageDefs\[0\]\.benefitStructure\.priorCoverageAmount"]',
 }

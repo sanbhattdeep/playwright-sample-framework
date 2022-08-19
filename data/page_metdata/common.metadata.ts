@@ -9,5 +9,6 @@ export enum CommonMetaData {
     Issue_Btn = 'button:has-text("Issue")',
     Continue_Btn = 'button:has-text("Continue")',
     Save_Btn = 'text="Save"',
-    left_arrow = 'svg[type="action-chevron-left-large"]'
+    left_arrow = 'svg[type="action-chevron-left-large"]',
+    Navigate_To_Tab = 'text=TabName',
 }

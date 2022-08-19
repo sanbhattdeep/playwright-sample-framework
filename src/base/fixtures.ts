@@ -17,7 +17,6 @@ const test = base.extend<{
     logger: Logger
     customerPortfolioPage: CustomerPortfolioPage
     createMemberQuotePage: CreateMemberQuotePage
-
 }>({
     page: [async ({ page }, use) => {
         //sign-in
@@ -49,7 +48,7 @@ const test = base.extend<{
     },
     createMemberQuotePage: async ({page}, use) => {
         await use(new CreateMemberQuotePage(page));
-    }
+    } 
 });
 
 export default test;

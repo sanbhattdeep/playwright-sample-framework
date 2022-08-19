@@ -204,4 +204,12 @@ export default class CreateNewQuotePage extends Wrapper {
         await confirmBtn.click();
         await this.waitForSpinner();
     }
+
+    public async selectFirstDayOfMonth(){
+        const policyEffectiveDate = await this.findLocator(PolicySummaryPageMetaData.PolicyEffectiveDate);
+        await policyEffectiveDate.click();
+        const policyEffectiveDate_SelectDate = await this.findLocator(PolicySummaryPageMetaData.PolicyEffectiveDate_SelectDate);
+        await policyEffectiveDate_SelectDate.click();
+        this.page.reload;
+    }
 }

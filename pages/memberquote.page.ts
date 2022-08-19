@@ -10,14 +10,17 @@ import Utils from "../utils/utils";
 import { expect } from "@playwright/test";
 import TestData from "../src/base/utils/TestData";
 import CommonHeaderPage from "./commonheader.page";
+import NavigationPage from "./navigation.page";
 
 export default class CreateMemberQuotePage extends Wrapper {
 
     private commonHeaderPage:CommonHeaderPage;
+    private navigationPage:NavigationPage;
 
     constructor(public page: Page) {
         super(page);
         this.commonHeaderPage = new CommonHeaderPage(page);
+        this.navigationPage = new NavigationPage(page)
     }
 
     public async doClickCreateMemberQuote(){
@@ -130,6 +133,8 @@ export default class CreateMemberQuotePage extends Wrapper {
         const next_Btn = await this.findLocator(PolicyDetailsPageMetaData.Next_Btn);
         await next_Btn.click();
         await this.waitForSpinner();
+        await this.refreshPage();
+        await this.navigationPage.navigatetoTab("Coverages");
     }
 
     public async selectCoverages(testData:TestData){
