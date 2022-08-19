@@ -12,6 +12,9 @@ export enum PolicySummaryPageMetaData {
     SitusState_Input = '//input[@id="quote.riskStateCd"]',
     SitusState_ALOption = '//li[@title="AL"]',
     Save_Btn = '//button[@class="ant-btn gen-data-gather-header-save-btn"]',
+    PolicyEffectiveDate = '//span[@id="quote.termDetails.termEffectiveDate"]//div//input',
+    PolicyEffectiveDate_Input = '//input[@class="ant-calendar-input "]',
+    PolicyEffectiveDate_SelectDate = '(//div[text()="1"])[1]'
 }
 
 export enum AgenciesAndCompensationPageMetaData {
