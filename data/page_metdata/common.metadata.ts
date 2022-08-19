@@ -8,5 +8,6 @@ export enum CommonMetaData {
     Search_Result = 'li[role="menuitem"]:has-text("search text")',
     Issue_Btn = 'button:has-text("Issue")',
     Continue_Btn = 'button:has-text("Continue")',
-    
+    Save_Btn = 'text="Save"',
+    left_arrow = 'svg[type="action-chevron-left-large"]'
 }

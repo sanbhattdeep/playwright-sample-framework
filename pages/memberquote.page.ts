@@ -9,11 +9,15 @@ import { CommonMetaData } from "../data/page_metdata/common.metadata";
 import Utils from "../utils/utils";
 import { expect } from "@playwright/test";
 import TestData from "../src/base/utils/TestData";
+import CommonHeaderPage from "./commonheader.page";
 
 export default class CreateMemberQuotePage extends Wrapper {
 
+    private commonHeaderPage:CommonHeaderPage;
+
     constructor(public page: Page) {
         super(page);
+        this.commonHeaderPage = new CommonHeaderPage(page);
     }
 
     public async doClickCreateMemberQuote(){
@@ -26,6 +30,7 @@ export default class CreateMemberQuotePage extends Wrapper {
     }
 
     public async fillPolicyDetailsSection(){
+        await this.commonHeaderPage.clickLeftArrow();
         const workState_Select = await this.findLocator(PolicyDetailsPageMetaData.WorkState_Select);
         await workState_Select.click();
         const workState_SelOption = await this.findLocator(PolicyDetailsPageMetaData.WorkState_SelOption);
@@ -34,6 +39,7 @@ export default class CreateMemberQuotePage extends Wrapper {
         await enrollmentType_Select.click();
         const enrollmentType_SelOption = await this.findLocator(PolicyDetailsPageMetaData.EnrollmentType_SelOption);
         await enrollmentType_SelOption.click();
+        this.commonHeaderPage.doSave();
         const next_Btn = await this.findLocator(PolicyDetailsPageMetaData.Next_Btn);
         await next_Btn.click();
         await this.waitForSpinner();
@@ -120,9 +126,7 @@ export default class CreateMemberQuotePage extends Wrapper {
         await annualEarning_Input.press('Backspace');
         await annualEarning_Input.press('Backspace');
         await this.fill(annualEarning_Input,testData.getTestData().InsuredWorkRelatedInfo.AnnualEarning.toString());
-        const save_Btn = await this.findLocator(InsuredPageMetaData.Save_Btn);
-        await save_Btn.click();
-        await this.waitForSpinner();
+        await this.commonHeaderPage.doSave();
         const next_Btn = await this.findLocator(PolicyDetailsPageMetaData.Next_Btn);
         await next_Btn.click();
         await this.waitForSpinner();
@@ -146,6 +150,7 @@ export default class CreateMemberQuotePage extends Wrapper {
         await priorCoverageAmount_Input.press('Backspace');
         await priorCoverageAmount_Input.press('Backspace');
         await this.fill(priorCoverageAmount_Input,testData.getTestData().CoverageDetailsSec.PriorCoverageAmount.toString());
+        await this.commonHeaderPage.doSave();
         const next_Btn = await this.findLocator(PolicyDetailsPageMetaData.Next_Btn);
         await next_Btn.click();
         await this.waitForSpinner();

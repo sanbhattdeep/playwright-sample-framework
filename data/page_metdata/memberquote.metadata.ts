@@ -41,7 +41,6 @@ export enum InsuredPageMetaData {
     AnnualEarning_Input = '[id="quote\.insured\.relationshipDetails\.annualEarningsAmount"]',
     PayrollFrequency_Select = 'text=Employment Type Payroll Frequency >> div[role="combobox"] >> nth=1',
     PayrollFrequency_SelOption = '//li[@title="Monthly"]',
-    Save_Btn = 'div[role="tabpanel"] button:has-text("Save")',
 }
 
 export enum CoveragesPageMetaData{
