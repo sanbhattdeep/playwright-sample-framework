@@ -49,4 +49,8 @@ export default class Wrapper {
     public async refreshPage(){
         await this.page.reload();
     }
+
+    public async waitForParticularTime(timeInMilliSeconds: number) {
+        await this.page.waitForTimeout(timeInMilliSeconds);
+    }
 }

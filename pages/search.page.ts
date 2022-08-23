@@ -15,8 +15,14 @@ export default class SearchPage extends Wrapper {
         const searchText = await this.findLocator(CommonMetaData.Search_Text);
         await searchText.click();
         await searchText.fill(searchTxt);
+        await this.waitForParticularTime(1000);
+        await searchText.press('Enter');
+        const searchIcon_Close = await this.findLocator(CommonMetaData.Search_Icon_Close);
+        await searchIcon_Close.click();
 
         const searchTextResult = await this.findLocator(CommonMetaData.Search_Result.replace("search text", searchTxt));
-        searchTextResult.click();
+        await searchTextResult.click();
     }
+
+    
 }

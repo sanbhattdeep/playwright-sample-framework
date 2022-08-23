@@ -12,7 +12,10 @@ export default class ClassManagementPage extends Wrapper {
     public async createOpportunity() {
         const createOpportunityLink = await this.findLocator(ClassManagementTypeMetaData.ClassManagementPage.CreateNewOpportunity_Link);
         await createOpportunityLink.click();
+        this.waitForSpinner();
         const createBtn = await this.findLocator(ClassManagementTypeMetaData.ClassManagementPage.Create_Btn);
+        await createBtn.click();
+        this.waitForSpinner();
     }
 
     public async addClass(){

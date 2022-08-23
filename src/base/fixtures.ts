@@ -2,11 +2,12 @@ import { expect, test as base } from '@playwright/test';
 import LoginPage from '../../pages/login.page';
 import CreateCustomerPage from '../../pages/createcustomer.page';
 import ClassManagementPage from '../../pages/classmanagement.page';
-import CreateNewQuotePage from '../../pages/createnewquote.page';CreateNewQuotePage
+import CreateNewQuotePage from '../../pages/createnewquote.page';
 import CustomerPortfolioPage from '../../pages/customerportfolio.page';
 import CreateMemberQuotePage from '../../pages/memberquote.page';
 import Env from "../../src/base/utils/Env";
 import Logger from "../../src/base/utils/Logger";
+import SearchPage from '../../pages/search.page';
 
 
 //override page fixture to include login
@@ -17,6 +18,7 @@ const test = base.extend<{
     logger: Logger
     customerPortfolioPage: CustomerPortfolioPage
     createMemberQuotePage: CreateMemberQuotePage
+    searchPage: SearchPage
 }>({
     page: [async ({ page }, use) => {
         //sign-in
@@ -48,7 +50,11 @@ const test = base.extend<{
     },
     createMemberQuotePage: async ({page}, use) => {
         await use(new CreateMemberQuotePage(page));
-    } 
+    }, 
+    searchPage: async ({page}, use) => {
+        await use(new SearchPage(page));
+    }
+
 });
 
 export default test;

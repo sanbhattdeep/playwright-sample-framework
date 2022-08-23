@@ -5,10 +5,11 @@ export enum CommonMetaData {
     Save_Exit_Btn = 'button:has-text("Save & Exit")',
     Search_Icon = '[type="action-search"]',
     Search_Text = '[aria-label="search text"]',
-    Search_Result = 'li[role="menuitem"]:has-text("search text")',
     Issue_Btn = 'button:has-text("Issue")',
     Continue_Btn = 'button:has-text("Continue")',
     Save_Btn = 'text="Save"',
     left_arrow = 'svg[type="action-chevron-left-large"]',
     Navigate_To_Tab = 'text=TabName',
+    Search_Result = 'tbody >> text="search text"',
+    Search_Icon_Close = '(//*[@role="img"])[3]',
 }
