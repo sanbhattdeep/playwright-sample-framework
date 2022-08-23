@@ -27,6 +27,7 @@
                 ],
                 "_type": "GenesisCrmCommunicationInfo"
             },
+            "groupSponsor": true,
             "details": {
                 "legalEntity": {
                     "legalName": "Organisation Customer",

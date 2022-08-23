@@ -1,41 +1,34 @@
+
+import { CustomerService } from '../../../src/base/backend/crm/CustomerService';
 import test, { expect } from '../../../src/base/fixtures';
+import Env from '../../../src/base/utils/Env';
 import TestData from '../../../src/base/utils/TestData';
 import { TestDataKeys } from '../../../src/base/utils/TestDataKeys';
 
 let testData: TestData;
+const org_customer = new CustomerService("create_org_customer_backend_test");
+let customerNumber: any;
+let init_url = `${Env.crm_base_url}${Env.org_customer_init_url}`;
+let write_url = `${Env.crm_base_url}${Env.org_customer_write_url}`;
 
 test.beforeEach(async ({ logger }) => {
   logger.setLogTransport("create_master_quote_ui_test");
   testData = new TestData(TestDataKeys.QUOTE_DATA_GATHER);
 });
 
-test('Verify User is able to Create Master Quote from @ui', async ({ page, createCustomerPage, classManagementPage, createNewQuotePage, customerPortfolioPage, logger }) => {
+test('Verify User is able to Create Master Quote from @ui', async ({ page, createCustomerPage, classManagementPage, createNewQuotePage, logger, searchPage, request, customerPortfolioPage }) => {
 
-  await test.step('Select Customer type as Organization', async () => {
-
-
-    logger.getLogger().info("Verify User is able to create Master Quote from UI");
-
-    await createCustomerPage.selectProductType();
-    logger.getLogger().info("Select Customer type as Organization");
-  });
-
-  await test.step('Fill General Info Section', async () => {
-    await createCustomerPage.fillGeneralInfoLegalName();
-    logger.getLogger().info("Fill General Info Section");
-  });
-
-  await test.step('Fill Contact Address details and Save', async () => {
-    await createCustomerPage.fillContactAddress('Legal');
-    await createCustomerPage.doConfirm();
-    await createCustomerPage.doSaveAndExit();
-    logger.getLogger().info("Fill Contact Address details and Save");
+  await test.step('Create organisation customer through API', async () => {
+    customerNumber = await org_customer.createCustomerViaAPI(init_url, write_url, request);
+    logger.getLogger().info("Organization Customer created with number: " +customerNumber);
+    await searchPage.doQuickSearch(customerNumber);
   });
 
   await test.step('Fill Details in the Class Management Page to create class and click on Opportunity link', async () => {
     await classManagementPage.addClass();
     await classManagementPage.enterClassNumber(testData);
     await createCustomerPage.doSaveAndExit();
+    await classManagementPage.createOpportunity();
     await classManagementPage.clickOpportunity();
     logger.getLogger().info("Fill Details in the Class Management Page to create class and click on Opportunity link");
   });

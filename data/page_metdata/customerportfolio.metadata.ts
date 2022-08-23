@@ -13,6 +13,7 @@ export enum PoliciesTabMetaData {
     AmendReason_ComboBox = 'text=Amendment Effective DateReason >> div[role="combobox"]', 
     CancellationReason_Option = '//li[@title="Group Sponsor Request"]',
     AmendReason_Option = 'text=Plan Design Change',
+    AmendReason_Option_MemberQuote = 'text=Work Information Change',
     Continue_Btn = 'button:has-text("Continue")',
     Confirm_Btn = 'button:has-text("Confirm")',
     PolicyCancellation_AlertMessage = '//span[@class="ant-alert-message" and contains(text(),"This Policy was Cancelled Effective on")]',
@@ -28,4 +29,6 @@ export enum PoliciesTabMetaData {
     TransactionTypeText_Amendment = 'text=Amendment',
     TransactionHystory_Cancel_Btn= 'a:has-text("Cancel")',
     TransactionHistory_Status = 'a:has-text("STATUS")',
+    EnrollmentType_DropDown =    '//*[@id="quote.enrollmentTypeCd"]/div',
+    EnrollmentType_DropDown_Value = 'text=Late Entrant',
 }

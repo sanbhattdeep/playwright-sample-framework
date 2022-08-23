@@ -11,6 +11,7 @@ import { expect } from "@playwright/test";
 import TestData from "../src/base/utils/TestData";
 import CommonHeaderPage from "./commonheader.page";
 import NavigationPage from "./navigation.page";
+import { PoliciesTabMetaData } from "../data/page_metdata/customerportfolio.metadata";
 
 export default class CreateMemberQuotePage extends Wrapper {
 
@@ -54,6 +55,14 @@ export default class CreateMemberQuotePage extends Wrapper {
         await next_Btn.click();
         await this.waitForSpinner(); 
     }
+
+    public async doNextInMemberQuote(){
+        //click Next Button on Agency & Compensation Tab as Details are filled during Master quote creation
+        const next_Btn = await this.findLocator('//*[@class="eis-btn-content" and text()="Next"]');
+        await next_Btn.click();
+        await this.waitForSpinner(); 
+    }
+    
 
     public async doClickAddNewInsured(){
          //click on Add New Insured
@@ -177,4 +186,61 @@ export default class CreateMemberQuotePage extends Wrapper {
         const memberQuoteStatus = await this.findLocator(PremiumSummaryPageMetaData.MemberQuoteStatus);
         await expect(memberQuoteStatus).toBeVisible();
     }
+
+    public async doMemberPolicyAmend() {
+        const iWantTo_Btn = await this.findLocator(PoliciesTabMetaData.IWantTo_Btn);
+        await iWantTo_Btn.click();
+
+        const iWantTo_AmendBtn = await this.findLocator(PoliciesTabMetaData.IWantTo_Amend_Btn);
+        await iWantTo_AmendBtn.click();
+
+        const amendmentEffectiveDate = await this.findLocator(PoliciesTabMetaData.AmendmentEffectiveDate);
+        await amendmentEffectiveDate.click();
+
+        const today_SelDate = await this.findLocator(PoliciesTabMetaData.Today_SelDate);
+        await today_SelDate.click();
+
+        const amendReason_ComboBox = await this.findLocator(PoliciesTabMetaData.AmendReason_ComboBox);
+        await amendReason_ComboBox.click();
+
+        const amendReason_Option = await this.findLocator(PoliciesTabMetaData.AmendReason_Option_MemberQuote);
+        await amendReason_Option.click();
+
+        const continue_Btn = await this.findLocator(PoliciesTabMetaData.Continue_Btn);
+        await continue_Btn.click();
+
+        const enrollmentType_ComboBox = await this.findLocator(PoliciesTabMetaData.EnrollmentType_DropDown);
+        await enrollmentType_ComboBox.click();
+
+        const enrollmentType_ComboBox_value = await this.findLocator(PoliciesTabMetaData.EnrollmentType_DropDown_Value);
+        await enrollmentType_ComboBox_value.click();
+        await this.waitForParticularTime(1000);
+        await this.doNextInMemberQuote();
+        await this.waitForParticularTime(1000);
+        await this.doNextInMemberQuote();
+        await this.waitForParticularTime(1000);
+        await this.doNextInMemberQuote();
+        await this.waitForParticularTime(1000);
+        await this.doNextInMemberQuote();
+        await this.waitForParticularTime(1000);
+        await this.issueMemberQuote();
+
+    }
+
+    public async verifyAmendmentDetailsInPolicyHistory(){
+        const policyHistoryTab_link = await this.findLocator("//*[@role='tab' and text()='Policy History']");
+        await policyHistoryTab_link.click();
+
+        const versionNumber = await this.findLocator("(//*[@class='ant-table-tbody']/tr/td)[1]");
+        await expect(versionNumber).toContainText("2");
+
+        const type = await this.findLocator("(//*[@class='ant-table-tbody']/tr/td)[3]");
+        await expect(type).toContainText("Amendment");
+
+        const reason = await this.findLocator("(//*[@class='ant-table-tbody']/tr/td)[5]");
+        await expect(reason).toContainText("Work Information Change");
+        
+    }
+
+
 }
