@@ -65,7 +65,7 @@ export class CustomerService {
     await expect(_response).toBeOK();
     this.logger.getLogger().info("Write: Completed. ");
 
-    let org_custLoad_url_withRootID = `${Env.crm_base_url}${Env.org_customer_load_url}${_lastRootID}`;
+    let org_custLoad_url_withRootID = `${Env.CRM_BASE_URL}${Env.org_customer_load_url}${_lastRootID}`;
     await this.doPost(org_custLoad_url_withRootID, request);
 
     let customerNumber = apiResponse.body.success.customerNumber;
