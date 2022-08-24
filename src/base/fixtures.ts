@@ -22,13 +22,13 @@ const test = base.extend<{
 }>({
     page: [async ({ page }, use) => {
         //sign-in
-        await page.goto(Env.cssr_base_url);
-        await page.goto(`${Env.cssr_base_url}${Env.ccsr_login_url}`);
+        await page.goto(Env.CSSR_BASE_URL);
+        await page.goto(`${Env.CSSR_BASE_URL}${Env.ccsr_login_url}`);
         const loginPage = new LoginPage(page);
         await loginPage.enterUserName();
         await loginPage.enterPassword();
         await loginPage.signIn();
-        await expect(page).toHaveURL(`${Env.cssr_base_url}${Env.cssr_signedin_url}`);
+        await expect(page).toHaveURL(`${Env.CSSR_BASE_URL}${Env.cssr_signedin_url}`);
         // Use signed-in page in the test.
         await use(page);
     }, { scope: 'test', timeout: 60000 } ],

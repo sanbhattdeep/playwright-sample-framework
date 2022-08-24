@@ -9,7 +9,7 @@ test('Verify User is able to create Individual customer from UI @ui', async ({ p
   await test.step('Select Customer type as individual', async () => {
     await createCustomerPage.doAddNew();
     await createCustomerPage.doOk();
-    await expect(page).toHaveURL(`${Env.cssr_base_url}${Env.cssr_create_ind_customer_url}`);
+    await expect(page).toHaveURL(`${Env.CSSR_BASE_URL}${Env.cssr_create_ind_customer_url}`);
     logger.getLogger().info("Select Customer type as individual");
   });
 
