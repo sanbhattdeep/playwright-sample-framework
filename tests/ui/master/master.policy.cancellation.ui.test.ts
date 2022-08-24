@@ -7,8 +7,8 @@ import { TestDataKeys } from '../../../src/base/utils/TestDataKeys';
 let testData: TestData;
 const org_customer = new CustomerService("create_org_customer_backend_test");
 let customerNumber: any;
-let init_url = `${Env.crm_base_url}${Env.org_customer_init_url}`;
-let write_url = `${Env.crm_base_url}${Env.org_customer_write_url}`;
+let init_url = `${Env.CRM_BASE_URL}${Env.org_customer_init_url}`;
+let write_url = `${Env.CRM_BASE_URL}${Env.org_customer_write_url}`;
 
 test.beforeEach(async ({ logger }) => {
   logger.setLogTransport("cancel_master_quote_ui_test");

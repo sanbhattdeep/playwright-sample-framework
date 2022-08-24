@@ -2,13 +2,12 @@ import { test } from '@playwright/test';
 import Env from '../../../src/base/utils/Env';
 import Utils from '../../../src/base/utils/utils';
 import { CustomerService } from '../../../src/base/backend/crm/CustomerService';
-import logger from "../../../src/base/utils/fixtures";
 
 test.describe('Create Organisation customer from backend @backend', async () => {
   let _lastRootID; let testdata;
   const org_customer = new CustomerService("create_org_customer_backend_test");
-  let init_url = `${Env.crm_base_url}${Env.org_customer_init_url}`;
-  let write_url = `${Env.crm_base_url}${Env.org_customer_write_url}`;
+  let init_url = `${Env.CRM_BASE_URL}${Env.org_customer_init_url}`;
+  let write_url = `${Env.CRM_BASE_URL}${Env.org_customer_write_url}`;
 
 
   test('create/verify org customer from backend with init-write-load @backend', async ({ request }) => {
@@ -26,7 +25,7 @@ test.describe('Create Organisation customer from backend @backend', async () => 
     });
 
     await test.step('call load customer api and verify rootId', async () => {
-      let org_custLoad_url_withRootID = `${Env.crm_base_url}${Env.org_customer_load_url}${_lastRootID}`;
+      let org_custLoad_url_withRootID = `${Env.CRM_BASE_URL}${Env.org_customer_load_url}${_lastRootID}`;
       await org_customer.doPost(org_custLoad_url_withRootID, request);
     });
     

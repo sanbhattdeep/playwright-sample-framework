@@ -10,8 +10,8 @@ test.describe('Create Individual customer from backend', async () => {
   let _response: APIResponse;
   let testdata: object;
   const ind_customer =new CustomerService("create_ind_customer_backend_test");
-  let ind_init_url = `${Env.crm_base_url}${Env.ind_customer_init_url}`;
-  let ind_write_url = `${Env.crm_base_url}${Env.ind_customer_write_url}`;
+  let ind_init_url = `${Env.CRM_BASE_URL}${Env.ind_customer_init_url}`;
+  let ind_write_url = `${Env.CRM_BASE_URL}${Env.ind_customer_write_url}`;
   
   test('create/verify individual customer from backend with init-write-load @backend', async ({ request }) => {
 
@@ -28,7 +28,7 @@ test.describe('Create Individual customer from backend', async () => {
     });
 
     await test.step('call load customer api and verify rootId', async () => {
-      let ind_custLoad_url_withRootID = `${Env.crm_base_url}${Env.ind_customer_load_url}${_lastRootID}`;
+      let ind_custLoad_url_withRootID = `${Env.CRM_BASE_URL}${Env.ind_customer_load_url}${_lastRootID}`;
       await ind_customer.doPost(ind_custLoad_url_withRootID, request);
     });
 

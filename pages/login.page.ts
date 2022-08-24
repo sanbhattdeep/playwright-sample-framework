@@ -12,13 +12,13 @@ export default class LoginPage extends Wrapper {
     public async enterUserName() {
         const userName = await this.findLocator(LoginMetaData.LoginPage.userName);
         await userName.click();
-        await userName.fill(Env.qa_user_password);
+        await userName.fill(Env.QA_USER_PASSWORD);
     }
 
     public async enterPassword() {
         const enterPassword = await this.findLocator(LoginMetaData.LoginPage.Password);
         await enterPassword.click();
-        await enterPassword.fill(Env.qa_user_password);
+        await enterPassword.fill(Env.QA_USER_PASSWORD);
         await enterPassword.press('Tab');
     }
 

@@ -8,7 +8,7 @@ test('Verify Organization customer creation from UI @ui', async ({ page, createC
 
   await test.step('Select Customer type as Organization', async () => {
     await createCustomerPage.selectOrgCustomerTye();
-    await expect(page).toHaveURL(`${Env.cssr_base_url}${Env.cssr_create_org_customer_url}`);
+    await expect(page).toHaveURL(`${Env.CSSR_BASE_URL}${Env.cssr_create_org_customer_url}`);
     logger.getLogger().info("Select Customer type as Organization");
   });
 
