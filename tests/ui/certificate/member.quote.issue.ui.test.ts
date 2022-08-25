@@ -1,9 +1,16 @@
 import test, { expect } from '../../../src/base/fixtures';
 import TestData from '../../../src/base/utils/TestData';
 import { TestDataKeys } from '../../../src/base/utils/TestDataKeys';
+import { CustomerService } from '../../../src/base/backend/crm/CustomerService';
+import Env from '../../../src/base/utils/Env';
 
 let testDataMaster: TestData;
 let testDataMember: TestData;
+const org_customer = new CustomerService("create_org_customer_backend_test");
+let customerNumber: any;
+
+let init_url = `${Env.CRM_BASE_URL}${Env.org_customer_init_url}`;
+let write_url = `${Env.CRM_BASE_URL}${Env.org_customer_write_url}`;
 
 test.beforeEach(async ({ logger }) => {
   logger.setLogTransport("create_member_quote_ui_test");
@@ -11,30 +18,19 @@ test.beforeEach(async ({ logger }) => {
   testDataMember = new TestData(TestDataKeys.MEMBERQUOTE_DATA_GATHER);
 });
 
-test('Verify User is able to Create Member Quote from @ui', async ({ page, createCustomerPage, classManagementPage, createNewQuotePage, customerPortfolioPage, createMemberQuotePage, logger }) => {
+test('Verify User is able to Create Member Quote from @ui', async ({ page, createCustomerPage, classManagementPage, createNewQuotePage, customerPortfolioPage, createMemberQuotePage, logger, searchPage, request }) => {
 
-  await test.step('Select Customer type as Organization', async () => {
-    logger.getLogger().info("Verify User is able to create Master Quote from UI");
-    await createCustomerPage.selectProductType();
-    logger.getLogger().info("Select Customer type as Organization");
-  });
-
-  await test.step('Fill General Info Section', async () => {
-    await createCustomerPage.fillGeneralInfoLegalName();
-    logger.getLogger().info("Fill General Info Section");
-  });
-
-  await test.step('Fill Contact Address details and Save', async () => {
-    await createCustomerPage.fillContactAddress('Legal');
-    await createCustomerPage.doConfirm();
-    await createCustomerPage.doSaveAndExit();
-    logger.getLogger().info("Fill Contact Address details and Save");
+  await test.step('Create organisation customer through API', async () => {
+    customerNumber = await org_customer.createCustomerViaAPI(init_url, write_url, request);
+    logger.getLogger().info("Organization Customer created with number: " +customerNumber);
+    await searchPage.doQuickSearch(customerNumber);
   });
 
   await test.step('Fill Details in the Class Management Page to create class and click on Opportunity link', async () => {
     await classManagementPage.addClass();
     await classManagementPage.enterClassNumber(testDataMaster);
     await createCustomerPage.doSaveAndExit();
+    await classManagementPage.createOpportunity();
     await classManagementPage.clickOpportunity();
     logger.getLogger().info("Fill Details in the Class Management Page to create class and click on Opportunity link");
   });

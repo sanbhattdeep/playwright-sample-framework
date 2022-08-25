@@ -51,6 +51,7 @@ export default class CustomerPortfolioPage extends Wrapper {
     public async verifyStatusOnTransactionPage(Status: string){
         const transactionHistory_Btn = await this.findLocator(PoliciesTabMetaData.TransactionHistory_Btn);
         await transactionHistory_Btn.click();
+        await this.waitForSpinner();
         const transactionHistory_CancellationStatus = await this.findLocator(PoliciesTabMetaData.TransactionHistory_Status.replace("STATUS", Status));
         await expect(transactionHistory_CancellationStatus).toBeVisible();
     }
