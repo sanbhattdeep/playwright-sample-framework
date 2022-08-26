@@ -100,7 +100,7 @@ test('Verify User is able to Cancel Mid Term Master policy from @ui', async ({ p
   });
 
   await test.step('Click on I Want To button to proceed for cancelling the Master Policy and verfiy the Cancellation Message' , async () => {
-    await customerPortfolioPage.doPolicyCancellation();
+    await customerPortfolioPage.doCancellation("Group Sponsor Request");
     await customerPortfolioPage.verifyCancellationMsg();
     logger.getLogger().info("Click on I Want To button to proceed for cancelling the Master Policy and verfiy the Cancellation Message");
   });

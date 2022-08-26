@@ -24,7 +24,7 @@ export default class CustomerPortfolioPage extends Wrapper {
         await expect(policyStatus_Active).toBeVisible();
     }
 
-    public async doPolicyCancellation() {
+    public async doCancellation(reason: string) {
         const iWantTo_Btn = await this.findLocator(PoliciesTabMetaData.IWantTo_Btn);
         await iWantTo_Btn.click();
         const iWantTo_CancelBtn = await this.findLocator(PoliciesTabMetaData.IWantTo_CancelBtn);
@@ -35,7 +35,7 @@ export default class CustomerPortfolioPage extends Wrapper {
         await today_SelDate.click();
         const cancellationReason_ComboBox = await this.findLocator(PoliciesTabMetaData.CancellationReason_ComboBox);
         await cancellationReason_ComboBox.click();
-        const cancellationReason_Option = await this.findLocator(PoliciesTabMetaData.CancellationReason_Option);
+        const cancellationReason_Option = await this.findLocator(PoliciesTabMetaData.CancellationReason_Option.replace("Cancellation Reason", reason));
         await cancellationReason_Option.click();
         const continue_Btn = await this.findLocator(PoliciesTabMetaData.Continue_Btn);
         await continue_Btn.click();
