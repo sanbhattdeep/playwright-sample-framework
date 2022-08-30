@@ -35,12 +35,8 @@ The following software are required:
   ```sh
   https://nodejs.org/en/download/
   ```
-- Install Java 8 or above, Allure Reports require Java 8 or higher.
 
-- allure commandline : Install allure command line for generating Allure Reports using
-  ```sh
-  npm ci -g allure-commandline
-  ```
+- Install Java 8 or above, Allure Reports require Java 8 or higher.
 
 ### Installation
 
@@ -77,7 +73,8 @@ npm run test:record
 4. For Allure Report generation execute :
 
 ```JS
-npm run allureReport
+allure generate my-allure-results -o allure-report --clean
+allure open allure-report
 ```
 5. For HTML Report generation execute below command , single static HTML report(index.html) which can be sent via email is generated in "html-report" folder:
 
